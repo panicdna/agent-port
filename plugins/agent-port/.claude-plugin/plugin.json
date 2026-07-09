@@ -1,0 +1,27 @@
+{
+  "name": "agent-port",
+  "version": "1.0.0",
+  "description": "Convert subagent definitions between Claude Code and OpenCode in either direction, by driving the bundled agent_port CLI (convert / check / batch). Auto-detects source format, maps model aliases and tools <-> permission map, and reports every lossy field (temperature, steps, per-command bash scoping, non-Anthropic models) instead of dropping it silently.",
+  "author": {
+    "name": "panicdna",
+    "url": "https://github.com/panicdna"
+  },
+  "maintainer": {
+    "name": "panicdna",
+    "url": "https://github.com/panicdna"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/panicdna/agent-port",
+  "repository": "https://github.com/panicdna/agent-port.git",
+  "keywords": [
+    "agent",
+    "subagent",
+    "opencode",
+    "claude-code",
+    "conversion",
+    "migration",
+    "cli",
+    "tooling"
+  ],
+  "category": "developer-tools"
+}
