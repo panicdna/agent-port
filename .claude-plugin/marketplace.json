@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "agent-port",
-      "source": "./plugins/agent-port",
+      "source": "./",
       "description": "Convert subagent definitions between Claude Code and OpenCode by driving the bundled agent_port CLI (convert / check / batch). Auto-detects source format, maps model aliases and tools <-> permission, and reports every lossy field instead of dropping it silently."
     }
   ]

@@ -81,52 +81,42 @@ The skill never mutates the source file.
 | Body            | verbatim                                   | verbatim                                                 |
 
 Full field-by-field rules live in
-[`field-mapping.md`](./plugins/agent-port/skills/agent-port/references/field-mapping.md);
+[`field-mapping.md`](./skills/agent-port/references/field-mapping.md);
 the `tools:` ↔ `permission:` asymmetry (the lossy edge) is documented in
-[`permission-model.md`](./plugins/agent-port/skills/agent-port/references/permission-model.md).
+[`permission-model.md`](./skills/agent-port/references/permission-model.md).
 
 ## The bundled CLI
 
-The skill drives `plugins/agent-port/skills/agent-port/scripts/agent_port.py`
-— a dependency-free Python 3 CLI you can also run directly:
+The skill drives `skills/agent-port/scripts/agent_port.py` — a dependency-free
+Python 3 CLI you can also run directly on any agent file:
 
 ```bash
-cd plugins/agent-port/skills/agent-port/scripts
-python3 agent_port.py check examples/opencode/test-runner.md      # lossy demo
-python3 agent_port.py convert examples/claude/code-reviewer.md --to opencode --out /tmp/out
-python3 -m unittest test_agent_port -v                            # 21 tests
+cd skills/agent-port/scripts
+python3 agent_port.py check   path/to/agent.md                     # validate + loss report
+python3 agent_port.py convert path/to/agent.md --to opencode --out /tmp/out
 ```
-
-Two demo agents in `scripts/examples/` (built from a single source by
-`build.py`) double as test oracles: `code-reviewer` is the **lossless
-round-trip** case (Claude → OpenCode → Claude reproduces the original exactly),
-and `test-runner` is the **lossy** case that exercises every dropped-field and
-collapsed-scoping warning.
 
 ## Repository structure
 
 ```
 agent-port/
 ├── .claude-plugin/
-│   └── marketplace.json                              # marketplace manifest
-├── plugins/
+│   ├── marketplace.json          # marketplace manifest (plugin source: "./")
+│   └── plugin.json               # plugin manifest
+├── skills/
 │   └── agent-port/
-│       ├── .claude-plugin/
-│       │   └── plugin.json                           # plugin manifest
-│       └── skills/
-│           └── agent-port/
-│               ├── SKILL.md                          # skill (drives the CLI)
-│               ├── references/
-│               │   ├── field-mapping.md              # field-by-field rules
-│               │   └── permission-model.md           # tools ↔ permission
-│               └── scripts/
-│                   ├── agent_port.py                 # the CLI
-│                   ├── test_agent_port.py            # 21 tests
-│                   └── examples/                     # demo agents / fixtures
-├── doc/                                              # design notes
+│       ├── SKILL.md              # the skill (drives the CLI)
+│       ├── references/
+│       │   ├── field-mapping.md  # field-by-field rules
+│       │   └── permission-model.md
+│       └── scripts/
+│           └── agent_port.py     # the bundled CLI
 ├── README.md
 └── LICENSE
 ```
+
+The repository root is itself the single plugin (`source: "./"`), so there is
+no extra `plugins/agent-port/` nesting.
 
 ## License
 

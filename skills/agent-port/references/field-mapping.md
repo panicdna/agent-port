@@ -2,7 +2,7 @@
 
 Single source of truth for field-by-field transformation, both directions.
 `SKILL.md` links here from Step 3; do not duplicate this table in the main
-file. Grounded in `doc/subagent-authoring-compare.md`.
+file.
 
 ## Direction is symmetric in intent, asymmetric in loss
 

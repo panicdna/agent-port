@@ -4,7 +4,6 @@ Claude Code scopes a subagent with a flat **allowlist** (`tools:`). OpenCode
 scopes an agent with a **permission map** (`permission:`) that is per-tool
 *and* per-command (glob patterns on `bash`). The two models do not line up
 1:1; this file documents the asymmetry and the deterministic rules we apply.
-Grounded in `doc/subagent-authoring-compare.md` §3–4.
 
 ## The asymmetry
 
@@ -47,7 +46,6 @@ permission:
 ```
 
 (Read is allowed by default, so it may be omitted or written `read: allow`.)
-This reproduces the read-only reviewer in `doc/` exactly.
 
 Notes to emit:
 

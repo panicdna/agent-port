@@ -136,19 +136,3 @@ them.
   failure unless `--strict` was explicitly requested.
 - **Missing `--out` on a write**: default dir is fine, but if the user seems to
   expect a specific location, run `--dry-run` first and confirm.
-
-## Self-check note
-
-Bundled fixtures let you smoke-test the CLI without touching the user's files:
-
-```bash
-cd "${CLAUDE_SKILL_DIR}/scripts"
-python3 -m unittest test_agent_port            # 21 tests
-python3 agent_port.py check examples/opencode/test-runner.md   # lossy demo
-python3 agent_port.py check examples/claude/code-reviewer.md   # lossless demo
-```
-
-A round-trip — Claude → OpenCode → Claude on `examples/claude/code-reviewer.md`
-— reproduces the original `tools:`/`model:` modulo the documented lossy fields.
-If it does not, the mapping tables in `references/` drifted from the CLI; fix
-`agent_port.py` and the references together (they must agree).
