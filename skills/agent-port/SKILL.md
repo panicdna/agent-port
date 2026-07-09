@@ -18,7 +18,7 @@ metadata:
   version: 1.0.0
   category: tooling
   tags: agent, subagent, opencode, claude-code, conversion, migration, cli
-allowed-tools: Bash(python3 *) Read Glob
+allowed-tools: Bash(python3 *), Read, Glob
 ---
 
 # agent-port — Claude Code ↔ OpenCode Subagent Converter (CLI-driven)
